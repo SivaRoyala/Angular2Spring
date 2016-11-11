@@ -9,6 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
+import com.siva.exception.StudentDaoException;
 import com.student.dto.StudentDto;
 import com.student.entity.Student;
 
@@ -23,7 +24,7 @@ public class StudentDaoImpl implements IStudentDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<StudentDto> getStudentList() {
+	public List<StudentDto> getStudentList() throws StudentDaoException {
 		Session session = null;
 		List<StudentDto> studentDtoList = null;		
 		try{
@@ -31,7 +32,7 @@ public class StudentDaoImpl implements IStudentDao {
 			List<Student> studentList = session.createQuery("from Student").list();
 			studentDtoList = getDtoList(studentList);
 		}catch(Exception e){
-			throw new RuntimeException("Something went wrong");
+			throw new StudentDaoException("Something went wrong while getting Students details");
 		}finally{
 			closeSession(session);
 		}
@@ -39,7 +40,7 @@ public class StudentDaoImpl implements IStudentDao {
 	}
 
 	@Override
-	public boolean createStudent(StudentDto studentDto) {
+	public boolean createStudent(StudentDto studentDto) throws StudentDaoException {
 		Session session = null;
 		Transaction tr = null;
 		boolean saveFlag = false;
@@ -52,8 +53,8 @@ public class StudentDaoImpl implements IStudentDao {
 			saveFlag = true;
 		}catch(Exception e){
 			tr.rollback();
-			e.printStackTrace();
-			throw new RuntimeException("Something went wrong");
+			//e.printStackTrace();
+			throw new StudentDaoException("Something went wrong while creating Student");
 		}finally{
 			closeSession(session);
 		}
@@ -61,7 +62,7 @@ public class StudentDaoImpl implements IStudentDao {
 	}
 
 	@Override
-	public StudentDto updateStudent(StudentDto studentDto) {
+	public StudentDto updateStudent(StudentDto studentDto) throws StudentDaoException {
 		Session session = null;
 		Transaction tr = null;
 		StudentDto dto = null;
@@ -74,8 +75,8 @@ public class StudentDaoImpl implements IStudentDao {
 			tr.commit();
 		}catch(Exception e){
 			tr.rollback();
-			e.printStackTrace();
-			throw new RuntimeException("Something went wrong");
+			//e.printStackTrace();
+			throw new StudentDaoException("Something went wrong while updting Student");
 		}finally{
 			closeSession(session);
 		}
@@ -83,7 +84,7 @@ public class StudentDaoImpl implements IStudentDao {
 	}
 
 	@Override
-	public boolean deleteStudent(int id) {
+	public boolean deleteStudent(int id) throws StudentDaoException {
 		Session session = null;
 		Transaction tr = null;
 		boolean deleteFlag = false;	
@@ -100,8 +101,8 @@ public class StudentDaoImpl implements IStudentDao {
 			}			
 		}catch(Exception e){
 			tr.rollback();
-			e.printStackTrace();
-			throw new RuntimeException("Something went wrong");
+			//e.printStackTrace();
+			throw new StudentDaoException("Something went wrong while deleting Student");
 		}finally{
 			closeSession(session);
 		}

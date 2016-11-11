@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.siva.exception.StudentDaoException;
+import com.siva.exception.StudentServiceException;
 import com.student.dao.IStudentDao;
 import com.student.dto.StudentDto;
 
@@ -17,23 +19,39 @@ public class StudentServiceImpl implements IStudentService {
 	}
 
 	@Override
-	public List<StudentDto> getStudentList() {
-		return this.studentDao.getStudentList();
+	public List<StudentDto> getStudentList() throws StudentServiceException {
+		try{
+			return this.studentDao.getStudentList();
+		}catch(StudentDaoException ex){
+			throw new StudentServiceException(ex.getErrorMsg());
+		}
 	}
 
 	@Override
-	public boolean addStudent(StudentDto dto) {
-		return this.studentDao.createStudent(dto);
+	public boolean addStudent(StudentDto dto) throws StudentServiceException {
+		try{
+			return this.studentDao.createStudent(dto);
+		}catch(StudentDaoException ex){
+			throw new StudentServiceException(ex.getErrorMsg());
+		}
 	}
 
 	@Override
-	public StudentDto updateStudent(StudentDto dto) {		
-		return this.studentDao.updateStudent(dto);
+	public StudentDto updateStudent(StudentDto dto) throws StudentServiceException {		
+		try{
+			return this.studentDao.updateStudent(dto);
+		}catch(StudentDaoException ex){
+			throw new StudentServiceException(ex.getErrorMsg());
+		}
 	}
 
 	@Override
-	public boolean deleteStudent(int StudentId) {
-		return this.studentDao.deleteStudent(StudentId);
+	public boolean deleteStudent(int StudentId) throws StudentServiceException {
+		try{
+			return this.studentDao.deleteStudent(StudentId);
+		}catch(StudentDaoException ex){
+			throw new StudentServiceException(ex.getErrorMsg());
+		}
 	}
 
 }
