@@ -1,0 +1,35 @@
+<div class="container">
+  <h2>Student Search</h2>
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="name">Id :</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="name" placeholder="search by id">
+      </div>
+    </div>
+    <div style="width:100%">  
+        <div style="width: 40%; margin: 0 auto; margin-bottom: 10px;">Or/And</div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="phNo">Name :</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="phNo" placeholder="search by name">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-6">
+        <button type="submit" class="btn btn-default" (click)="submitSearch()">Search</button>
+        <button type="submit" class="btn btn-default" onclick="reset();">Clear</button>
+      </div>
+    </div>
+  </form>
+</div>
+<div *ngIf="students && students.length > 0">
+    <h4>Student Search Results</h4>
+    <hr style="border: 1px solid; margin: 0px 0px;">
+    <ul class="students">
+        <li *ngFor="let student of students" [class.selected]="student === selectedStudent" (click)="onSelect(student)">
+            <span class="badge">{{student.id}}</span><span class="badge">{{student.name}}</span><span class="badge">{{student.address}}</span>
+        </li>
+    </ul>
+</div>
