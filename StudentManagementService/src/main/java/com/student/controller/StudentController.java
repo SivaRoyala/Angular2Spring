@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.siva.exception.ErrorResponse;
-import com.siva.exception.StudentServiceException;
 import com.student.dto.StudentDto;
+import com.student.exception.ErrorResponse;
+import com.student.exception.StudentServiceException;
 import com.student.model.Student;
 import com.student.service.IStudentService;
 

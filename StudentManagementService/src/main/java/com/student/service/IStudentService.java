@@ -2,8 +2,8 @@ package com.student.service;
 
 import java.util.List;
 
-import com.siva.exception.StudentServiceException;
 import com.student.dto.StudentDto;
+import com.student.exception.StudentServiceException;
 
 public interface IStudentService {
 	

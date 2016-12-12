@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.siva.exception.StudentDaoException;
-import com.siva.exception.StudentServiceException;
 import com.student.dao.IStudentDao;
 import com.student.dto.StudentDto;
+import com.student.exception.StudentDaoException;
+import com.student.exception.StudentServiceException;
 
 @Service
 public class StudentServiceImpl implements IStudentService {

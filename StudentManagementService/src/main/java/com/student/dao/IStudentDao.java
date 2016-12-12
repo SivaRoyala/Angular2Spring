@@ -2,8 +2,8 @@ package com.student.dao;
 
 import java.util.List;
 
-import com.siva.exception.StudentDaoException;
 import com.student.dto.StudentDto;
+import com.student.exception.StudentDaoException;
 
 public interface IStudentDao {
 	

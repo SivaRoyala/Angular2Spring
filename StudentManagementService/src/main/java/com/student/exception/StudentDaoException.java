@@ -1,4 +1,4 @@
-package com.siva.exception;
+package com.student.exception;
 
 public class StudentDaoException extends RuntimeException {
 	

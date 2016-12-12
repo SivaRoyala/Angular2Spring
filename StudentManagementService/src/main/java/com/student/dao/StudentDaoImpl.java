@@ -9,9 +9,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
-import com.siva.exception.StudentDaoException;
 import com.student.dto.StudentDto;
 import com.student.entity.Student;
+import com.student.exception.StudentDaoException;
 
 @Repository
 public class StudentDaoImpl implements IStudentDao {
