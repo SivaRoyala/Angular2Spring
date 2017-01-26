@@ -14,5 +14,9 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
  <context:component-scan base-package="com.student.controller" />
 
  <mvc:annotation-driven />
+ <!-- To Support CROS for angularJS-->
+ <mvc:cors>
+	<mvc:mapping path="/**" />
+</mvc:cors>
  
 </beans>
